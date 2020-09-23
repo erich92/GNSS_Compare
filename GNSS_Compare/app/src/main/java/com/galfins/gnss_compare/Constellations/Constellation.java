@@ -66,6 +66,8 @@ public abstract class Constellation {
             GpsIonoFreeConstellation.registerClass();
             GalileoE5aConstellation.registerClass();
             GalileoIonoFreeConstellation.registerClass();
+            GpsL1L5Constellation.registerClass();
+            GalileoE1E5Constellation.registerClass();
 
             initialized = true;
         }
@@ -77,6 +79,8 @@ public abstract class Constellation {
     public static final int CONSTELLATION_GALILEO_GPS = 999; //todo is there a better way to define this?
     public static final int CONSTELLATION_GALILEO_IonoFree = 998; //todo is there a better way to define this?
     public static final int CONSTELLATION_GPS_IonoFree = 997; //todo is there a better way to define this?
+    public static final int CONSTELLATION_GALILEO_E1E5 = 996;
+    public static final int CONSTELLATION_GPS_L1L5 = 995;
 
     /**
      *

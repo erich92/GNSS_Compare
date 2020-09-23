@@ -298,6 +298,8 @@ public class MainActivity extends AppCompatActivity {
                 final Location lastLocation = locationResult.getLocations().get(locationResult.getLocations().size()-1);
 
                 if(lastLocation != null) {
+                    if (rawMeasurementsLogger.isStarted())
+                        rawMeasurementsLogger.addFineLocation(lastLocation);
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {

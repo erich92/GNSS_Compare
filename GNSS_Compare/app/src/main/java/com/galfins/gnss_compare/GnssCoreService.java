@@ -31,15 +31,23 @@ import android.util.Log;
 
 import com.galfins.gnss_compare.Constellations.Constellation;
 import com.galfins.gnss_compare.Constellations.GalileoConstellation;
+import com.galfins.gnss_compare.Constellations.GalileoE1E5Constellation;
+import com.galfins.gnss_compare.Constellations.GalileoE5aConstellation;
 import com.galfins.gnss_compare.Constellations.GalileoGpsConstellation;
+import com.galfins.gnss_compare.Constellations.GalileoIonoFreeConstellation;
 import com.galfins.gnss_compare.Constellations.GpsConstellation;
+import com.galfins.gnss_compare.Constellations.GpsIonoFreeConstellation;
+import com.galfins.gnss_compare.Constellations.GpsL1L5Constellation;
+import com.galfins.gnss_compare.Constellations.GpsL5Constellation;
 import com.galfins.gnss_compare.Corrections.Correction;
 import com.galfins.gnss_compare.Corrections.ShapiroCorrection;
 import com.galfins.gnss_compare.Corrections.TropoCorrection;
 import com.galfins.gnss_compare.FileLoggers.FileLogger;
 import com.galfins.gnss_compare.FileLoggers.NmeaFileLogger;
+import com.galfins.gnss_compare.FileLoggers.SimpleFileLogger;
 import com.galfins.gnss_compare.PvtMethods.DynamicExtendedKalmanFilter;
 import com.galfins.gnss_compare.PvtMethods.PvtMethod;
+import com.galfins.gnss_compare.PvtMethods.StaticExtendedKalmanFilter;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
@@ -294,8 +302,48 @@ public class GnssCoreService extends Service {
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
-                    DynamicExtendedKalmanFilter.class,
+                    StaticExtendedKalmanFilter.class,
                     NmeaFileLogger.class));
+
+            initialModules.add(new CalculationModule(
+                    "GPSL1+L5",
+                    GpsL1L5Constellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    StaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));
+
+            initialModules.add(new CalculationModule(
+                    "GalileoE1+E5",
+                    GalileoE1E5Constellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    StaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));
+
+            /*initialModules.add(new CalculationModule(
+                    "GalileoIono",
+                    GalileoIonoFreeConstellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    StaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));
+
+            initialModules.add(new CalculationModule(
+                    "GPSIono",
+                    GpsIonoFreeConstellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    StaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));*/
 
             initialModules.add(new CalculationModule(
                     "GPS",
@@ -304,7 +352,17 @@ public class GnssCoreService extends Service {
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
-                    DynamicExtendedKalmanFilter.class,
+                    StaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));
+
+            initialModules.add(new CalculationModule(
+                    "GPSL5",
+                    GpsL5Constellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    StaticExtendedKalmanFilter.class,
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
@@ -314,7 +372,17 @@ public class GnssCoreService extends Service {
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
-                    DynamicExtendedKalmanFilter.class,
+                    StaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));
+
+            initialModules.add(new CalculationModule(
+                    "GalileoE5",
+                    GalileoE5aConstellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    StaticExtendedKalmanFilter.class,
                     NmeaFileLogger.class));
         } catch (Exception e){
             e.printStackTrace();

@@ -289,7 +289,7 @@ public class GalileoE5aConstellation extends Constellation {
 
     @Override
     public List<SatelliteParameters> getUnusedSatellites() {
-        return null;
+        return unusedSatellites;
     }
 
     @Override

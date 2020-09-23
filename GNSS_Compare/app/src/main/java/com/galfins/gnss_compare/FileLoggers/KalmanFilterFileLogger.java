@@ -129,10 +129,21 @@ public class KalmanFilterFileLogger extends FileLogger {
 
             String locationStream =
                     String.format(Locale.ENGLISH,
+                            "Fix,%s,%f,%f,%f,%f,%f,%d",
+                            fineLocation.getProvider(),
+                            fineLocation.getLatitude(),
+                            fineLocation.getLongitude(),
+                            fineLocation.getAltitude(),
+                            fineLocation.getSpeed(),
+                            fineLocation.getAccuracy(),
+                            fineLocation.getTime());
+
+            /*String locationStream =
+                    String.format(Locale.ENGLISH,
                             "FL, %f, %f, %f",
                             fineLocation.getLatitude(),
                             fineLocation.getLongitude(),
-                            fineLocation.getAltitude());
+                            fineLocation.getAltitude());*/
             try {
                 mFileWriter.write(locationStream);
                 mFileWriter.newLine();
