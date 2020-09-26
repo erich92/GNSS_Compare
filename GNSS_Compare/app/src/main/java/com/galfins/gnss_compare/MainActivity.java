@@ -55,6 +55,7 @@ import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
 import com.rd.PageIndicatorView;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -415,6 +416,7 @@ public class MainActivity extends AppCompatActivity {
             public void update(Observable o, Object calculationModules) {
 
                 for(DataViewer viewer : mPagerAdapter.getViewers()){
+                    rawMeasurementsLogger.logCalculationModules((ArrayList<CalculationModule>) calculationModules);
                     viewer.update((CalculationModulesArrayList) calculationModules);
                 }
 

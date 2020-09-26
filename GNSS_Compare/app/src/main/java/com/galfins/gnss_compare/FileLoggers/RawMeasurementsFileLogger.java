@@ -25,8 +25,10 @@ import android.os.SystemClock;
 import android.util.Log;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Locale;
 
+import com.galfins.gnss_compare.CalculationModule;
 import com.galfins.gnss_compare.Constellations.Constellation;
 import com.galfins.gogpsextracts.Coordinates;
 
@@ -210,6 +212,32 @@ public class RawMeasurementsFileLogger extends FileLogger{
 
     public static void registerClass(){
         register(NAME, RawMeasurementsFileLogger.class);
+    }
+
+    public void logCalculationModules(ArrayList<CalculationModule> list){
+        synchronized (mFileLock) {
+            if (mFileWriter == null) {
+                return;
+            }
+            for( CalculationModule module : list ){
+
+                String moduleStream =
+                        String.format(
+                                "%o,%s,%s,%s,%s",
+                                System.currentTimeMillis(),
+                                module.getName(),
+                                "Lon:" + module.getPose().getGeodeticLongitude(),
+                                "Lat:" + module.getPose().getGeodeticLatitude(),
+                                "Height:" + module.getPose().getGeodeticHeight()
+                        );
+                try {
+                    mFileWriter.write(moduleStream);
+                    mFileWriter.newLine();
+                } catch (IOException e) {
+                    Log.e(TAG, ERROR_WRITING_FILE, e);
+                }
+            }
+        }
     }
 
 }
