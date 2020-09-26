@@ -302,7 +302,7 @@ public class GnssCoreService extends Service {
                     "Galileo+GPS_P",
                     GalileoGpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -313,7 +313,7 @@ public class GnssCoreService extends Service {
                     "GPS_P",
                     GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -324,7 +324,7 @@ public class GnssCoreService extends Service {
                     "Galileo_P",
                     GalileoConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -335,7 +335,7 @@ public class GnssCoreService extends Service {
                     "Galileo+GPS_S",
                     GalileoGpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -346,7 +346,7 @@ public class GnssCoreService extends Service {
                     "GPS_S",
                     GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -357,7 +357,7 @@ public class GnssCoreService extends Service {
                     "Galileo_S",
                     GalileoConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -368,7 +368,7 @@ public class GnssCoreService extends Service {
                     "Galileo+GPS_D",
                     GalileoGpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -379,7 +379,7 @@ public class GnssCoreService extends Service {
                     "GPS_D",
                     GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -390,7 +390,7 @@ public class GnssCoreService extends Service {
                     "Galileo_D",
                     GalileoConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -401,14 +401,14 @@ public class GnssCoreService extends Service {
                     "Galileo+GPS_W",
                     GalileoGpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
+                        //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
                     WeightedLeastSquares.class,
                     NmeaFileLogger.class));
 
-            initialModules.add(new CalculationModule(
+            /*initialModules.add(new CalculationModule(
                     "GPS_W",
                     GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
@@ -428,7 +428,7 @@ public class GnssCoreService extends Service {
                         add(TropoCorrection.class);
                     }},
                     WeightedLeastSquares.class,
-                    NmeaFileLogger.class));
+                    NmeaFileLogger.class));*/
 
             /*initialModules.add(new CalculationModule(
                     "GPSL1+L5",

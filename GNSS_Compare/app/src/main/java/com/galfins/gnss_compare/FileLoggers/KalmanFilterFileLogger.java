@@ -30,7 +30,7 @@ public class KalmanFilterFileLogger extends FileLogger {
     private static final String NAME = "EKF";
 
     public KalmanFilterFileLogger() {
-        TAG = "KalmanFilterFileLogger";
+        TAG = "KFFL";
         filePrefix = "";
         initialLine = "%% E, Latitude error, Longitude error" +
                 "\n%% x, x_meas[0], ..., x_meas[numStates] " +

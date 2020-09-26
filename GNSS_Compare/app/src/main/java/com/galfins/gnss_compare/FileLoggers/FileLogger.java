@@ -25,6 +25,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Set;
@@ -73,7 +74,8 @@ public abstract class FileLogger {
             }
 
             SimpleDateFormat formatter = new SimpleDateFormat("yyy_MM_dd_HH_mm_ss");
-            Date now = new Date();
+            //Date now = new Date();
+            Date now = Calendar.getInstance().getTime();
             String fileName = String.format("%s_%s_%s.txt", TAG, filePrefix, formatter.format(now));
             File currentFile = new File(baseDirectory, fileName);
             String currentFilePath = currentFile.getAbsolutePath();
