@@ -25,8 +25,13 @@ import android.os.SystemClock;
 import android.util.Log;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import com.galfins.gnss_compare.CalculationModule;
 import com.galfins.gnss_compare.Constellations.Constellation;
@@ -91,7 +96,7 @@ public class RawMeasurementsFileLogger extends FileLogger{
         initialLine.append(COMMENT_START);
         initialLine.append('\n');
         initialLine.append(COMMENT_START);
-        initialLine.append("Fix,Fused,Latitude,Longitude,Altitude,Speed,Accuracy,(UTC)TimeInMs");
+        initialLine.append("Fix,Constellation,Latitude,Longitude,Altitude,Speed,Accuracy,(UTC)TimeInMs");
         initialLine.append('\n');
         initialLine.append(COMMENT_START);
         // initialLine.append('\n');
@@ -219,16 +224,31 @@ public class RawMeasurementsFileLogger extends FileLogger{
             if (mFileWriter == null) {
                 return;
             }
+
+            //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("hhmmss");
+
+            Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC+2:00"));
+            DateFormat date = new SimpleDateFormat("HH:mm:ss");
+            date.setTimeZone(TimeZone.getTimeZone("UTC+2:00"));
+
             for( CalculationModule module : list ){
+
+                /*Date date = new Date(System.currentTimeMillis());
+                String time = simpleDateFormat.format(date);*/
+                Date currentLocalTime = cal.getTime();
+                String localTime = date.format(currentLocalTime);
 
                 String moduleStream =
                         String.format(
-                                "%o,%s,%s,%s,%s",
-                                System.currentTimeMillis(),
+                                "%s,%s,%s,%s,%s,%s,%s,%s",
+                                "Fix",
                                 module.getName(),
-                                "Lon:" + module.getPose().getGeodeticLongitude(),
-                                "Lat:" + module.getPose().getGeodeticLatitude(),
-                                "Height:" + module.getPose().getGeodeticHeight()
+                                module.getPose().getGeodeticLatitude(),
+                                module.getPose().getGeodeticLongitude(),
+                                module.getPose().getGeodeticHeight(),
+                                module.getPose().getU(),
+                                module.getPose().getN(),
+                                localTime
                         );
                 try {
                     mFileWriter.write(moduleStream);
