@@ -40,6 +40,7 @@ import com.galfins.gnss_compare.Constellations.GpsIonoFreeConstellation;
 import com.galfins.gnss_compare.Constellations.GpsL1L5Constellation;
 import com.galfins.gnss_compare.Constellations.GpsL5Constellation;
 import com.galfins.gnss_compare.Corrections.Correction;
+import com.galfins.gnss_compare.Corrections.IonoCorrection;
 import com.galfins.gnss_compare.Corrections.ShapiroCorrection;
 import com.galfins.gnss_compare.Corrections.TropoCorrection;
 import com.galfins.gnss_compare.FileLoggers.FileLogger;
@@ -299,6 +300,7 @@ public class GnssCoreService extends Service {
                     "Galileo+GPS",
                     GalileoGpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
+                        add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -306,6 +308,28 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
+                    "GPS",
+                    GpsConstellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        add(IonoCorrection.class);
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    StaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));
+
+            initialModules.add(new CalculationModule(
+                    "Galileo",
+                    GalileoConstellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        add(IonoCorrection.class);
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    StaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));
+
+            /*initialModules.add(new CalculationModule(
                     "GPSL1+L5",
                     GpsL1L5Constellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
@@ -323,7 +347,7 @@ public class GnssCoreService extends Service {
                         add(TropoCorrection.class);
                     }},
                     StaticExtendedKalmanFilter.class,
-                    NmeaFileLogger.class));
+                    NmeaFileLogger.class));*/
 
             /*initialModules.add(new CalculationModule(
                     "GalileoIono",
@@ -345,17 +369,7 @@ public class GnssCoreService extends Service {
                     StaticExtendedKalmanFilter.class,
                     NmeaFileLogger.class));*/
 
-            initialModules.add(new CalculationModule(
-                    "GPS",
-                    GpsConstellation.class,
-                    new ArrayList<Class<? extends Correction>>() {{
-                        add(ShapiroCorrection.class);
-                        add(TropoCorrection.class);
-                    }},
-                    StaticExtendedKalmanFilter.class,
-                    NmeaFileLogger.class));
-
-            initialModules.add(new CalculationModule(
+            /*initialModules.add(new CalculationModule(
                     "GPSL5",
                     GpsL5Constellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
@@ -363,19 +377,9 @@ public class GnssCoreService extends Service {
                         add(TropoCorrection.class);
                     }},
                     StaticExtendedKalmanFilter.class,
-                    NmeaFileLogger.class));
+                    NmeaFileLogger.class));*/
 
-            initialModules.add(new CalculationModule(
-                    "Galileo",
-                    GalileoConstellation.class,
-                    new ArrayList<Class<? extends Correction>>() {{
-                        add(ShapiroCorrection.class);
-                        add(TropoCorrection.class);
-                    }},
-                    StaticExtendedKalmanFilter.class,
-                    NmeaFileLogger.class));
-
-            initialModules.add(new CalculationModule(
+            /*initialModules.add(new CalculationModule(
                     "GalileoE5",
                     GalileoE5aConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
@@ -383,7 +387,7 @@ public class GnssCoreService extends Service {
                         add(TropoCorrection.class);
                     }},
                     StaticExtendedKalmanFilter.class,
-                    NmeaFileLogger.class));
+                    NmeaFileLogger.class));*/
         } catch (Exception e){
             e.printStackTrace();
             Log.e(TAG, "createInitialCalculationModules: Exception when creating modules");
