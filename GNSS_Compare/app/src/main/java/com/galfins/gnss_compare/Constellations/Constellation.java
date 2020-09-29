@@ -68,6 +68,7 @@ public abstract class Constellation {
             GalileoIonoFreeConstellation.registerClass();
             GpsL1L5Constellation.registerClass();
             GalileoE1E5Constellation.registerClass();
+            AllConstellation.registerClass();
 
             initialized = true;
         }
