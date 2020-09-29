@@ -81,6 +81,7 @@ public abstract class Constellation {
     public static final int CONSTELLATION_GPS_IonoFree = 997; //todo is there a better way to define this?
     public static final int CONSTELLATION_GALILEO_E1E5 = 996;
     public static final int CONSTELLATION_GPS_L1L5 = 995;
+    public static final int CONSTELLATION_ALL = 994;
 
     /**
      *

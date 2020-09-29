@@ -29,6 +29,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
+import com.galfins.gnss_compare.Constellations.AllConstellation;
 import com.galfins.gnss_compare.Constellations.Constellation;
 import com.galfins.gnss_compare.Constellations.GalileoConstellation;
 import com.galfins.gnss_compare.Constellations.GalileoE1E5Constellation;
@@ -310,32 +311,10 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "GPS_P_RP+TC+KIC",
-                    GpsConstellation.class,
-                    new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
-                        add(ShapiroCorrection.class);
-                        add(TropoCorrection.class);
-                    }},
-                    PedestrianStaticExtendedKalmanFilter.class,
-                    NmeaFileLogger.class));
-
-            initialModules.add(new CalculationModule(
                     "GPS_S_RP+TC",
                     GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
-                        add(ShapiroCorrection.class);
-                        add(TropoCorrection.class);
-                    }},
-                    StaticExtendedKalmanFilter.class,
-                    NmeaFileLogger.class));
-
-            initialModules.add(new CalculationModule(
-                    "GPS_S_RP+TC+KIC",
-                    GpsConstellation.class,
-                    new ArrayList<Class<? extends Correction>>() {{
-                        add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -400,6 +379,28 @@ public class GnssCoreService extends Service {
             initialModules.add(new CalculationModule(
                     "GalE5a_P_RP+TC",
                     GalileoE5aConstellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        //add(IonoCorrection.class);
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    PedestrianStaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));
+
+            initialModules.add(new CalculationModule(
+                    "All_S_RP+TC",
+                    AllConstellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        //add(IonoCorrection.class);
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    StaticExtendedKalmanFilter.class,
+                    NmeaFileLogger.class));
+
+            initialModules.add(new CalculationModule(
+                    "All_P_RP+TC",
+                    AllConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
