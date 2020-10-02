@@ -238,16 +238,18 @@ public class RawMeasurementsFileLogger extends FileLogger{
                 Date currentLocalTime = cal.getTime();
                 String localTime = date.format(currentLocalTime);
 
+                Constellation constellation = module.getConstellation();
+
                 String moduleStream =
                         String.format(
-                                "%s,%s,%s,%s,%s,%s,%s,%s",
+                                "%s,%s,%s,%s,%s,%s,%d,%s",
                                 "Fix",
                                 module.getName(),
                                 module.getPose().getGeodeticLatitude(),
                                 module.getPose().getGeodeticLongitude(),
                                 module.getPose().getGeodeticHeight(),
                                 module.getPose().getU(),
-                                module.getActive(),
+                                constellation.getUsedConstellationSize(),
                                 localTime
                         );
                 try {
