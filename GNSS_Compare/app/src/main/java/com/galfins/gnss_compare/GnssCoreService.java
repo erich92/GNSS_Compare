@@ -388,8 +388,8 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "All_S_RP+TC",
-                    AllConstellation.class,
+                    "GPSL1+L5_S_RP+TC",
+                    GpsL1L5Constellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
@@ -399,8 +399,8 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "All_P_RP+TC",
-                    AllConstellation.class,
+                    "GPSL1+L5_P_RP+TC",
+                    GpsL1L5Constellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);

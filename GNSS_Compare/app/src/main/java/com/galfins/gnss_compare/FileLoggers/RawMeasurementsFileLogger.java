@@ -247,7 +247,7 @@ public class RawMeasurementsFileLogger extends FileLogger{
                                 module.getPose().getGeodeticLongitude(),
                                 module.getPose().getGeodeticHeight(),
                                 module.getPose().getU(),
-                                module.getPose().getN(),
+                                module.getActive(),
                                 localTime
                         );
                 try {
