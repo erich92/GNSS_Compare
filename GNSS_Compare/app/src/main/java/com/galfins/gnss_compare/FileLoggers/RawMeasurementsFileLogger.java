@@ -96,7 +96,7 @@ public class RawMeasurementsFileLogger extends FileLogger{
         initialLine.append(COMMENT_START);
         initialLine.append('\n');
         initialLine.append(COMMENT_START);
-        initialLine.append("Fix,Constellation,Latitude,Longitude,Altitude,Speed,Accuracy,(UTC)TimeInMs");
+        initialLine.append("Fix,Constellation,Latitude,Longitude,Altitude,Satelliten,(UTC)TimeInMs");
         initialLine.append('\n');
         initialLine.append(COMMENT_START);
         // initialLine.append('\n');
@@ -242,13 +242,12 @@ public class RawMeasurementsFileLogger extends FileLogger{
 
                 String moduleStream =
                         String.format(
-                                "%s,%s,%s,%s,%s,%s,%d,%s",
+                                "%s,%s,%s,%s,%s,%d,%s",
                                 "Fix",
                                 module.getName(),
                                 module.getPose().getGeodeticLatitude(),
                                 module.getPose().getGeodeticLongitude(),
                                 module.getPose().getGeodeticHeight(),
-                                module.getPose().getU(),
                                 constellation.getUsedConstellationSize(),
                                 localTime
                         );
