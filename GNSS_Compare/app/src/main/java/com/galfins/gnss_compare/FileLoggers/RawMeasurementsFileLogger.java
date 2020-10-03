@@ -49,7 +49,7 @@ public class RawMeasurementsFileLogger extends FileLogger{
     private static final String NAME = "RawMeasurements";
 
     public RawMeasurementsFileLogger(String calculationName) {
-        TAG = "RawMeasurementsFileLogger";
+        TAG = "RMFL";
         filePrefix = calculationName;
         initialLine = createInitialLine();
     }
