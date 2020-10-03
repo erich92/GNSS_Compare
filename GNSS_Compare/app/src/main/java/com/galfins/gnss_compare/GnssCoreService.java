@@ -322,6 +322,17 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
+                    "GPS_W_RP+TC",
+                    GpsConstellation.class,
+                    new ArrayList<Class<? extends Correction>>() {{
+                        //add(IonoCorrection.class);
+                        add(ShapiroCorrection.class);
+                        add(TropoCorrection.class);
+                    }},
+                    WeightedLeastSquares.class,
+                    NmeaFileLogger.class));
+
+            initialModules.add(new CalculationModule(
                     "GPSL5_P_RP+TC",
                     GpsL5Constellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
@@ -344,21 +355,21 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "Gal_S_RP+TC",
-                    GalileoConstellation.class,
+                    "GPSL5_W_RP+TC",
+                    GpsL5Constellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
-                    StaticExtendedKalmanFilter.class,
+                    WeightedLeastSquares.class,
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "Gal_P_RP+TC",
-                    GalileoConstellation.class,
+                    "GPS_P_RP+TC+KIC",
+                    GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        //add(IonoCorrection.class);
+                        add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -366,10 +377,10 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "GalE5a_S_RP+TC",
-                    GalileoE5aConstellation.class,
+                    "GPS_S_RP+TC+KIC",
+                    GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        //add(IonoCorrection.class);
+                        add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
@@ -377,36 +388,14 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "GalE5a_P_RP+TC",
-                    GalileoE5aConstellation.class,
+                    "GPS_W_RP+TC+KIC",
+                    GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
-                        //add(IonoCorrection.class);
+                        add(IonoCorrection.class);
                         add(ShapiroCorrection.class);
                         add(TropoCorrection.class);
                     }},
-                    PedestrianStaticExtendedKalmanFilter.class,
-                    NmeaFileLogger.class));
-
-            initialModules.add(new CalculationModule(
-                    "GPSL1+L5_S_RP+TC",
-                    GpsL1L5Constellation.class,
-                    new ArrayList<Class<? extends Correction>>() {{
-                        //add(IonoCorrection.class);
-                        add(ShapiroCorrection.class);
-                        add(TropoCorrection.class);
-                    }},
-                    StaticExtendedKalmanFilter.class,
-                    NmeaFileLogger.class));
-
-            initialModules.add(new CalculationModule(
-                    "GPSL1+L5_P_RP+TC",
-                    GpsL1L5Constellation.class,
-                    new ArrayList<Class<? extends Correction>>() {{
-                        //add(IonoCorrection.class);
-                        add(ShapiroCorrection.class);
-                        add(TropoCorrection.class);
-                    }},
-                    PedestrianStaticExtendedKalmanFilter.class,
+                    WeightedLeastSquares.class,
                     NmeaFileLogger.class));
 
             /*************************************initialModules.add(new CalculationModule(
