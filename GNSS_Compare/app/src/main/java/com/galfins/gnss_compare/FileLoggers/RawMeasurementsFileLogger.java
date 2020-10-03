@@ -120,12 +120,11 @@ public class RawMeasurementsFileLogger extends FileLogger{
 
             String locationStream =
                     String.format(Locale.ENGLISH,
-                            "Fix,%s,%f,%f,%f,%f,%f,%d",
+                            "Fix,%s,%f,%f,%f,%f,%d",
                             fineLocation.getProvider(),
                             fineLocation.getLatitude(),
                             fineLocation.getLongitude(),
                             fineLocation.getAltitude(),
-                            fineLocation.getSpeed(),
                             fineLocation.getAccuracy(),
                             fineLocation.getTime());
             try {
