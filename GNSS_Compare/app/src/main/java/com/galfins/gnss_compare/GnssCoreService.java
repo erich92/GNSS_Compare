@@ -312,7 +312,7 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "Gal_SP",
+                    "Gal_S",
                     GalileoConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
