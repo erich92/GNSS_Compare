@@ -301,7 +301,7 @@ public class GnssCoreService extends Service {
         try {
 
             initialModules.add(new CalculationModule(
-                    "GPS_S_RP_TC",
+                    "GPS_S_RP+TC",
                     GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
@@ -312,7 +312,7 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "Gal_S_RP_TC",
+                    "Gal_S_RP+TC",
                     GalileoConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
@@ -323,7 +323,7 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "Gal+GPS_S_RP_TC",
+                    "Gal+GPS_S_RP+TC",
                     GalileoGpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
@@ -334,7 +334,7 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "GPS_P_RP_TC",
+                    "GPS_P_RP+TC",
                     GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
@@ -345,7 +345,7 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "Gal_P_RP_TC",
+                    "Gal_P_RP+TC",
                     GalileoConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
@@ -356,7 +356,7 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "Gal+GPS_P_RP_TC",
+                    "Gal+GPS_P_RP+TC",
                     GalileoGpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
@@ -367,7 +367,7 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "GPS_D_RP_TC",
+                    "GPS_D_RP+TC",
                     GpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
@@ -378,7 +378,7 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "Gal_D_RP_TC",
+                    "Gal_D_RP+TC",
                     GalileoConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
@@ -389,7 +389,7 @@ public class GnssCoreService extends Service {
                     NmeaFileLogger.class));
 
             initialModules.add(new CalculationModule(
-                    "Gal+GPS_D_RP_TC",
+                    "Gal+GPS_D_RP+TC",
                     GalileoGpsConstellation.class,
                     new ArrayList<Class<? extends Correction>>() {{
                         //add(IonoCorrection.class);
